@@ -34,6 +34,21 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
+    //图片轮播框架
+    implementation 'com.youth.banner:banner:2.1.0'
+
+//    okhttp，用于发送get，post请求
+    implementation 'com.zhy:okhttputils:2.6.2'
+
+//    gson，文本解析
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+//    fastjson
+    implementation 'com.alibaba:fastjson:1.2.73'
+
+    //recyclerview
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

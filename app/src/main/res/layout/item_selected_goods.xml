@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_marginLeft="12dp"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_goods_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="8dp"
+        android:src="@mipmap/image_shop_good"
+        >
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/ll_goods_desc"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_height="100dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3瓶|美白防晒霜喷雾SPF50+全身体脖子面部隔离防水紫外线…"
+            android:textColor="#ff353535"
+            android:paddingRight="20dp"
+            android:textSize="14sp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            >
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="￥ 58.00"
+                android:textColor="#ffed5757"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="折扣价"
+                android:textColor="#ffffffff"
+                android:textSize="10sp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/shape_shop_discount"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:textSize="10dp"
+                android:text="原价 ¥138.00"
+                android:textColor="#ff8a8a8a"
+                android:layout_alignParentLeft="true"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/shape_shop_mg_btn"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:text="分享赚9¥"
+                    android:textColor="#ffffffff"
+                    android:textSize="14sp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@mipmap/ic_share1"
+                    android:drawablePadding="4dp"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
