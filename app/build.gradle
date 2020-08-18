@@ -40,14 +40,24 @@ dependencies {
 //    okhttp，用于发送get，post请求
     implementation 'com.zhy:okhttputils:2.6.2'
 
+    implementation("com.squareup.okhttp3:okhttp:3.3.1")
+
 //    gson，文本解析
     implementation 'com.google.code.gson:gson:2.8.6'
 
 //    fastjson
     implementation 'com.alibaba:fastjson:1.2.73'
 
+//    viewpagerIndicator的使用
+    implementation 'com.shizhefei:ViewPagerIndicator:1.1.9.androidx'
+//    由于用到了v4和recyclerview所以也要导入他们
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //noinspection GradleCompatible
+//    implementation 'com.android.support:support-v4:28.0.0'
+
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

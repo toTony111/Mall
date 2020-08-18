@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="32dp">
     <TextView
         android:id="@+id/tv_notice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/ic_share"
-        android:layout_marginLeft="10dp"
+        android:paddingLeft="10dp"
         android:drawablePadding="10dp"
         android:text="李*玲邀请了3位好友获得了200元"
+        android:background="#ffffd0cf"
         >
     </TextView>
 </LinearLayout>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,20 +12,82 @@
         <include android:id="@+id/title_bar" layout="@layout/title_bar"/>
     </LinearLayout>
 
-    <include android:id="@+id/title_bar" layout="@layout/item_make_a_group2" />
-
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="32dp"
         android:gravity="center"
-        android:text="-爆款推荐-"
-        android:background="@drawable/shape_bg">
+        android:text="全部   品牌热卖   护肤洗面   个人洗护   面膜精华"
+        >
     </TextView>
 
-    <ListView
+    <!--广告-->
+    <com.youth.banner.Banner
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
+
+    <!--拼团活动-->
+    <RelativeLayout
+        android:id="@+id/shop_mg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="12dp"
+        >
+
+        <TextView
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="拼团活动"
+            android:textColor="#ff353535"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="06天06:06:06"
+            android:textColor="#fff"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:padding="4dp"
+            android:background="@drawable/shape_shop_mg_btn2"
+            >
+        </TextView>
+    </RelativeLayout>
+
+<!--
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
+-->
+    <include layout="@layout/item_selected_goods" />
+
+    <!--精选商品-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="精选商品"
+        android:textColor="#ff353535"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="12dp"
+
+        />
+
+<!--
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+-->
+    <include layout="@layout/item_selected_goods" />
+
 </LinearLayout>

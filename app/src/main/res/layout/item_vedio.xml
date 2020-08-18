@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="169dp"
+    android:layout_height="172dp"
+    android:background="@drawable/shape_vedio"
+    >
+    <ImageView
+        android:id="@+id/vedio"
+        android:layout_width="169dp"
+        android:layout_height="96dp"
+        android:src="@mipmap/image2"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:text="4298"
+        android:textColor="#ffffffff"
+        android:textSize="10sp"
+        android:layout_alignBottom="@+id/vedio"
+        android:layout_alignLeft="@+id/vedio"
+        android:layout_marginBottom="4dp"
+        />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:text="10:23"
+        android:textColor="#ffffffff"
+        android:textSize="10sp"
+        android:layout_alignBottom="@+id/vedio"
+        android:layout_alignRight="@+id/vedio"
+        android:layout_marginBottom="4dp"
+
+        />
+
+        <TextView
+            android:id="@+id/tv_vedio_desc"
+            android:layout_below="@+id/vedio"
+            android:text="夏日炎炎~每次带孩子出去是不是都会黑了一大圈…"
+            android:textColor="#ff353535"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            />
+
+        <ImageView
+            android:layout_marginLeft="12dp"
+            android:id="@+id/iv_vedio_publisher"
+            android:layout_below="@id/tv_vedio_desc"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/ic_launcher"
+            >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_vedio_publisher"
+            android:layout_toRightOf="@+id/iv_vedio_publisher"
+            android:layout_alignBottom="@+id/iv_vedio_publisher"
+            android:layout_marginBottom="4dp"
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:text="竺咏彩"
+            android:textColor="#4c000000"
+            android:textSize="10sp"
+            />
+</RelativeLayout>
