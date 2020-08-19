@@ -10,10 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -21,29 +17,28 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.shoppingmall.R;
 import com.example.shoppingmall.base.BaseFragment;
-import com.example.shoppingmall.home.bean.Icon;
+import com.example.shoppingmall.home.bean.VideoBean;
 import com.example.shoppingmall.utils.Constants;
 import com.shizhefei.view.indicator.IndicatorViewPager;
-import com.shizhefei.view.indicator.RecyclerIndicatorView;
 import com.shizhefei.view.indicator.ScrollIndicatorView;
 import com.shizhefei.view.indicator.slidebar.ColorBar;
 import com.shizhefei.view.indicator.transition.OnTransitionTextListener;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class HomeFragment extends BaseFragment {
     private IndicatorViewPager indicatorViewPager;
     private View home;
-    private ArrayList<Icon> mData = null;
 
     @Override
     public View initView() {
         home = View.inflate(mContext, R.layout.fg_home, null);
 
         ViewPager viewPager = home.findViewById(R.id.moretab_viewPager);
-        ScrollIndicatorView scrollIndicatorView = home.findViewById(R.id.moretab_indicator);
+        ScrollIndicatorView scrollIndicatorView = home.findViewById(R.id.siv_video_type);
         float unSelectSize = 12;
         float selectSize = unSelectSize * 1.3f;
         scrollIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColor(0xffed5757, Color.GRAY).setSize(selectSize, unSelectSize));
@@ -51,7 +46,6 @@ public class HomeFragment extends BaseFragment {
         viewPager.setOffscreenPageLimit(2);
         indicatorViewPager = new IndicatorViewPager(scrollIndicatorView, viewPager);
         indicatorViewPager.setAdapter(new MyAdapter());
-
 
         /*完成数据初始化*/
         initData();
@@ -64,6 +58,10 @@ public class HomeFragment extends BaseFragment {
 
         //请求网络
 //        getDataFromNet();
+
+        /*初始化视频列表*/
+        List<VideoBean> list = new LinkedList<>();
+
     }
 
     private void getDataFromNet() {
@@ -125,7 +123,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private class MyAdapter extends IndicatorViewPager.IndicatorViewPagerAdapter {
-        private String[] versions = {"Cupcake", "Donut", "Éclair", "Froyo", "Gingerbread", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lolipop", "Marshmallow"};
+        private String[] versions = {"推荐视频" ,"品牌热卖", "护肤洗面", "个人洗护", "面膜精华", "Jelly Bean", "KitKat", "Lolipop", "Marshmallow"};
         private String[] names = {"纸杯蛋糕", "甜甜圈", "闪电泡芙", "冻酸奶", "姜饼", "蜂巢", "冰激凌三明治", "果冻豆", "奇巧巧克力棒", "棒棒糖", "棉花糖"};
 
         @Override
@@ -146,7 +144,6 @@ public class HomeFragment extends BaseFragment {
             //因为wrap的布局 字体大小变化会导致textView大小变化产生抖动，这里通过设置textView宽度就避免抖动现象
             //1.3f是根据上面字体大小变化的倍数1.3f设置
             textView.setWidth((int) (witdh * 1.3f) + padding);
-
             return convertView;
         }
 
@@ -161,6 +158,7 @@ public class HomeFragment extends BaseFragment {
             textView.setTextColor(Color.GRAY);
             return convertView;
         }
+
 
         @Override
         public int getItemPosition(Object object) {
