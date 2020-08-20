@@ -32,7 +32,7 @@
             android:text="商城"
             style="@style/rb_item"
             android:layout_height="match_parent"
-            android:drawableTop="@drawable/selector_home"
+            android:drawableTop="@drawable/selector_shop"
             />
 
         <RadioButton
@@ -40,7 +40,7 @@
             android:text="我的"
             style="@style/rb_item"
             android:layout_height="match_parent"
-            android:drawableTop="@drawable/selector_home"
+            android:drawableTop="@drawable/selector_mine"
             />
 
     </RadioGroup>

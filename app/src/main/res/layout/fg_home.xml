@@ -8,7 +8,17 @@
         android:layout_height="88dp"
         android:id="@+id/title_bar"
         android:background="@mipmap/top_bg"
+        android:paddingTop="50dp"
         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:layout_marginLeft="20dp"
+            android:text="广州"
+            android:layout_marginRight="10dp"
+            />
         <include layout="@layout/title_bar" />
     </LinearLayout>
 
@@ -16,9 +26,22 @@
 
     <!--广告-->
     <com.youth.banner.Banner
+        xmlns:banner="http://schemas.android.com/apk/res-auto"
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="120dp" />
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        banner:banner_radius="5dp"
+        banner:banner_indicator_normal_color="@android:color/white"
+        banner:banner_indicator_selected_color="@color/colorPrimary" />
+
+    <com.youth.banner.indicator.RoundLinesIndicator
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/banner"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
 
     <!--商品推荐-->
     <!--视频分类-->
@@ -33,10 +56,12 @@
         android:layout_height="match_parent">
 
         <!--视频列表-->
+<!--
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_vedio_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+-->
 
     </androidx.viewpager.widget.ViewPager>
 

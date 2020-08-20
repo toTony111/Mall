@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="150dp">
+    <ImageView
+        android:id="@+id/iv_user_header"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="14dp"
+        android:src="@mipmap/mine_header"
+        >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_marginTop="9dp"
+        android:layout_toRightOf="@id/iv_user_header"
+        android:layout_marginLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carrie Mathis"
+        android:textColor="#ff353535"
+        android:textSize="14sp"
+        />
+
+    <!--待做：星星-->
+
+    <TextView
+        android:id="@+id/tv_user_comment"
+        android:layout_alignLeft="@id/iv_user_header"
+        android:layout_below="@id/iv_user_header"
+        android:layout_marginTop="8dp"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:text="一直使用迪奥的香水，虽然是淡香水，感觉持久度也够了，会一直支持下去，送人也挺好的，走珠设计，不会浪费，适合很多场合，香味会有轻微的变化，淡淡…"
+        android:textColor="#ff353535"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        />
+
+        <!--待做：评价图片展示-->
+</RelativeLayout>
