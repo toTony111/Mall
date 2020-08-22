@@ -5,19 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.shoppingmall.R;
-import com.example.shoppingmall.home.bean.BannerBean;
-import com.example.shoppingmall.utils.Constants;
 import com.youth.banner.Banner;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;

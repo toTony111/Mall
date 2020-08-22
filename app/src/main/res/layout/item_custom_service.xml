@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    >
+    <TextView
+        android:id="@+id/tv_custom_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="客服"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableTop="@mipmap/ic_custom_service"
+        />
+    <TextView
+        android:id="@+id/tv_collect"
+        android:layout_toRightOf="@id/tv_custom_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收藏"
+        android:drawableTop="@mipmap/ic_collection"
+        />
+
+    <Button
+        android:id="@+id/tv_join_cart"
+        android:gravity="center"
+        android:layout_width="126dp"
+        android:textColor="#fff"
+        android:layout_height="match_parent"
+        android:text="加入购物车"
+        android:background="@drawable/shape_half_btn_left"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/tv_share_buy"
+        />
+    <Button
+        android:id="@+id/tv_share_buy"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_width="126dp"
+        android:textColor="#fff"
+        android:layout_height="match_parent"
+        android:text="分享赚 \n 返3.5元"
+        android:background="@drawable/shape_half_btn_right"
+        />
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
@@ -37,18 +38,23 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.GetBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class HomeFragment extends BaseFragment {
     private IndicatorViewPager indicatorViewPager;
     private View home;
     private Banner bannerView;
     private List<BannerBean> banners;
+
+    /*视频分类和视频列表*/
     private List<VideoTypeBean> videoType;
     private List<VideoBean> videoList;
+
     /*滚动条和视频列表*/
     private ScrollIndicatorView scrollIndicatorView;
     private ViewPager viewPager;
@@ -66,9 +72,8 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initData() {
 
-        //请求网络
+        //请求后台接口
         getDataFromNet();
-
         /*绑定tab与viewpager*/
         float unSelectSize = 12;
         float selectSize = unSelectSize * 1.3f;
@@ -76,18 +81,19 @@ public class HomeFragment extends BaseFragment {
         scrollIndicatorView.setScrollBar(new ColorBar(mContext, 0xffed5757, 4));
         viewPager.setOffscreenPageLimit(2);
         indicatorViewPager = new IndicatorViewPager(scrollIndicatorView, viewPager);
-/*        myAdapter.setVideoType(videoType);
-        myAdapter.setVideoList(videoList);*/
-        indicatorViewPager.setAdapter(new MyAdapter());
-
-
+        Log.i(TAG, "initData: "+videoType);
+        Log.i(TAG, "initData: "+videoList);
+        indicatorViewPager.setAdapter(new MyAdapter(videoType,videoList));
     }
+
+
 
     private void getDataFromNet() {
         GetBuilder getBuilder = OkHttpUtils.get();
         /*banner请求*/
             getBuilder
                 .url(Constants.BASE_BANNER)
+                .id(100)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -99,7 +105,7 @@ public class HomeFragment extends BaseFragment {
                     public void onResponse(String response, int id) {
                         switch (id) {
                             /*请求成功*/
-                            case 0:
+                            case 100:
                                 if (response != null) {
                                     processData(response, R.id.banner);
                                     bannerView = home.findViewById(R.id.banner);
@@ -123,9 +129,61 @@ public class HomeFragment extends BaseFragment {
                         }
                     }
                 });
+        /*视频分类请求*/
+        getBuilder
+                .url(Constants.VIDEO_INDEX_VIDEOTYPE)
+                .id(100)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("TAG", "网络请求失败" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        switch (id) {
+                            /*请求成功*/
+                            case 100:
+                                if (response != null) {
+                                    processData(response, R.id.siv_video_type);
+                                    Log.i("videoType",videoType.toString());
+                                }
+                            case 200:
+                                break;
+                        }
+                    }
+                });
+
+        /*视频列表请求*/
+        getBuilder
+                .url(Constants.VEDIO_INDEX_LIST)
+                .id(100)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("TAG", "网络请求失败" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        switch (id) {
+                            /*请求成功*/
+                            case 100:
+                                if (response != null) {
+                                    processData(response, R.id.moretab_viewPager);
+                                    Log.i("videoList",videoList.toString());
+                                }
+                            case 200:
+                                break;
+                        }
+                    }
+                });
     }
 
 
+    // 处理 数据
     private void processData(String response, int i) {
         JSONObject jsonObject = JSONObject.parseObject(response);
         String data = jsonObject.getString("data");
@@ -136,8 +194,11 @@ public class HomeFragment extends BaseFragment {
                     break;
                 case R.id.siv_video_type:
                     videoType = JSON.parseArray(data,VideoTypeBean.class);
+                    Log.i("ooooo", "processData: " + videoType.toString());
                     break;
                 case R.id.moretab_viewPager:
+                    JSONObject dataObject = JSONObject.parseObject(data);
+                    data = dataObject.getString("data");
                     videoList = JSON.parseArray(data,VideoBean.class);
                     break;
             }
@@ -145,21 +206,29 @@ public class HomeFragment extends BaseFragment {
     }
 
     private class MyAdapter extends IndicatorViewPager.IndicatorViewPagerAdapter {
-        private String[] versions = {"推荐","精华","推荐","精华", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lolipop", "Marshmallow"};
-        private String[] names = {"纸杯蛋糕", "甜甜圈", "闪电泡芙", "冻酸奶", "姜饼", "蜂巢", "冰激凌三明治", "果冻豆", "奇巧巧克力棒", "棒棒糖", "棉花糖"};
+        //        private String[] versions = {"推荐","精华","推荐","精华", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lolipop", "Marshmallow"};
+//        private String[] names = {"纸杯蛋糕", "甜甜圈", "闪电泡芙", "冻酸奶", "姜饼", "蜂巢", "冰激凌三明治", "果冻豆", "奇巧巧克力棒", "棒棒糖", "棉花糖"};
+        private List<VideoTypeBean> videoType;
+        private List<VideoBean> video;
+
+        public MyAdapter(List<VideoTypeBean> videoType, List<VideoBean> videoList) {
+            this.videoType = videoType;
+            this.video = videoList;
+        }
 
         @Override
         public int getCount() {
-            return versions.length;
+            return videoType.size();
         }
 
         @Override
         public View getViewForTab(int position, View convertView, ViewGroup container) {
+            Log.e("mytabError", "getViewForTab: " + position);
             if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.tab_top, container, false);
             }
             TextView textView = (TextView) convertView;
-            textView.setText(versions[position]);
+            textView.setText(videoType.get(position).getName());
 
             int witdh = getTextWidth(textView);
             int padding = DisplayUtil.dipToPix(getActivity(), 8);
@@ -172,11 +241,12 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public View getViewForPage(int position, View convertView, ViewGroup container) {
+            Log.i("sdsd", "getViewForPage: " + position);
             if (convertView == null) {
                 convertView = new TextView(container.getContext());
             }
             TextView textView = (TextView) convertView;
-            textView.setText(names[position]);
+            textView.setText(videoType.get(position).getName());
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(Color.GRAY);
             return convertView;
