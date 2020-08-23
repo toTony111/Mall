@@ -86,8 +86,6 @@ public class HomeFragment extends BaseFragment {
         indicatorViewPager.setAdapter(new MyAdapter(videoType,videoList));
     }
 
-
-
     private void getDataFromNet() {
         GetBuilder getBuilder = OkHttpUtils.get();
         /*banner请求*/
